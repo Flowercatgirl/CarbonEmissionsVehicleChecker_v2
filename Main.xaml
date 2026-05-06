@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,1502" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,1679.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="InvalidDT" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="OutOfScopeCount" />
@@ -230,14 +230,25 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_VCA_URL">[Config("VCA_URL").ToString()]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="CategoriseRows - Invoke Workflow File (Workflows\CategoriseRows.xaml)" sap:VirtualizedContainerService.HintSize="488,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\CategoriseRows.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="CategoriseRows - Invoke Workflow File (Workflows\CategoriseRows.xaml)" sap:VirtualizedContainerService.HintSize="488,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\CategoriseRows.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_OutOfScopeCount" />
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_InvalidDT" />
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LowDT" />
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_UltralowDT" />
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ZeroDT" />
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MasterEmissionsDT" />
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_OutOfScopeCount">[OutOfScopeCount]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_InvalidDT">[InvalidDT]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LowDT">[LowDT]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_UltralowDT">[UltralowDT]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ZeroDT">[ZeroDT]</OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MasterEmissionsDT">[MasterEmissionsDT]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="WriteToExcel - Invoke Workflow File (Workflows\WriteToExcel.xaml)" sap:VirtualizedContainerService.HintSize="488,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\WriteToExcel.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_OutputFilePath">[OutputFilePath]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolderPath">C:\WebProgApps\CarbonEmissionsVehicleChecker_v2\Data\Output</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_OutOfScopeCount">[OutOfScopeCount]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_InvalidDT">[InvalidDT]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_LowDT">[LowDT]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_UltralowDT">[UltralowDT]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ZeroDT">[ZeroDT]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
