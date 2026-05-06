@@ -102,8 +102,13 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,1679.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,1856.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="EmailRecipient">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">Oksana.Pankeviciene@schoolofautomation.tech</Literal>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="InvalidDT" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="OutOfScopeCount" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="LowDT" />
@@ -240,7 +245,7 @@
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MasterEmissionsDT">[MasterEmissionsDT]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="WriteToExcel - Invoke Workflow File (Workflows\WriteToExcel.xaml)" sap:VirtualizedContainerService.HintSize="488,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\WriteToExcel.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="WriteToExcel - Invoke Workflow File (Workflows\WriteToExcel.xaml)" sap:VirtualizedContainerService.HintSize="488,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\WriteToExcel.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_OutputFilePath">[OutputFilePath]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolderPath">C:\WebProgApps\CarbonEmissionsVehicleChecker_v2\Data\Output</InArgument>
@@ -249,6 +254,18 @@
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_LowDT">[LowDT]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_UltralowDT">[UltralowDT]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ZeroDT">[ZeroDT]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="SendEmail - Invoke Workflow File (Workflows\SendEmail.xaml)" sap:VirtualizedContainerService.HintSize="488,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workflows\SendEmail.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="in_ProcessStartTime">[ProcessStartTime]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_EmailRecipient">[EmailRecipient]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_OutOfScopeCount">[OutOfScopeCount]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_InvalidDT">[InvalidDT]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_LowDT">[LowDT]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_UltralowDT">[UltralowDT]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ZeroDT">[ZeroDT]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFilePath">[OutputFilePath]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
