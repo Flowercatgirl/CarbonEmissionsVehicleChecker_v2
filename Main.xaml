@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,1324.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="724,1502" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="InvalidDT" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="OutOfScopeCount" />
@@ -219,7 +219,7 @@
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="ScrapeData - Invoke Workflow File (Workflows\ScrapeData.xaml)" sap:VirtualizedContainerService.HintSize="488,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ScrapeData.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="ScrapeData - Invoke Workflow File (Workflows\ScrapeData.xaml)" sap:VirtualizedContainerService.HintSize="488,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ScrapeData.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_ScrapingErrorMsg" />
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_PartialScrape" />
@@ -228,6 +228,16 @@
         <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxPageRetries">[CInt(Config("MaxScrapingPageRetries"))]</InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_DisplayItemsPerPage">[CInt(Config("DisplayItemsPerPage"))]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_VCA_URL">[Config("VCA_URL").ToString()]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="CategoriseRows - Invoke Workflow File (Workflows\CategoriseRows.xaml)" sap:VirtualizedContainerService.HintSize="488,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\CategoriseRows.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_OutOfScopeCount" />
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_InvalidDT" />
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LowDT" />
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_UltralowDT" />
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ZeroDT" />
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_MasterEmissionsDT" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
